@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+          <div class="time">
+            <div class="box">
+                 <h2 id="hours">00<br>hours</h1>
+            </div>
+            <div class="box">
+                <h1 id="minutes">00<br>minutes</h1>
+           </div>
+           <div class="box">
+            <h1 id="seconds">00<br>seconds</h1>
+           </div>
+          </div>
+          <div class="day" id="d">
+            <span id="date"></span>
+          </div>
+        </div>
+        <script>
+            function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            document.getElementById('hours').innerHTML = `${hours}<br>hours`;
+            document.getElementById('minutes').innerHTML = `${minutes}<br>minutes`;
+            document.getElementById('seconds').innerHTML = `${seconds}<br>seconds`;
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date').innerHTML = now.toLocaleDateString(undefined, options);
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call
+        </script>
+    </body>
+</html>
